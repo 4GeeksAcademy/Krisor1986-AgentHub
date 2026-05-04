@@ -239,6 +239,21 @@ Opciones del dropdown:
 - Los enlaces laterales deben hacer scroll hacia cada seccion.
 - El enlace activo debe destacarse visualmente al hacer clic.
 
+## Inventario de componentes reutilizables
+
+El prototipo debe reutilizar los siguientes componentes de UI en varias secciones:
+
+1. Sidebar de navegacion: menu lateral persistente con enlaces a las seis secciones principales.
+2. Barra superior: contiene el titulo de la seccion activa, contexto breve y toggle de modo claro/oscuro.
+3. Tarjeta de metrica: usada en el Dashboard para mostrar etiqueta, valor principal y descripcion secundaria.
+4. Tabla de datos: usada en usuarios, contrataciones y log de errores.
+5. Dropdown de acciones: menu contextual activado con boton `⋮`, reutilizado en usuarios, agentes, skills, contrataciones y errores.
+6. Modal reutilizable: overlay con backdrop, titulo, contenido dinamico y boton de cierre.
+7. Badge de estado: etiqueta visual con color segun estado o gravedad.
+8. Lista colapsable de skills: componente expandible usado en la gestion de agentes.
+9. Toast o notificacion breve: mensaje temporal para acciones como eliminar o marcar error como resuelto.
+10. Toggle de modo oscuro: control global que alterna la clase `dark` en el elemento `html`.
+
 ## Criterios de aceptacion
 
 El proyecto se considera completo si:
