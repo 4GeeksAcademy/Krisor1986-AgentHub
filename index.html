@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentHub Admin Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <div class="min-h-screen lg:flex">
+      <aside class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95 lg:h-screen lg:w-72 lg:border-b-0 lg:border-r">
+        <div class="flex items-center gap-3 px-5 py-4">
+          <span class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-600 text-lg font-black text-white">
+            AH
+          </span>
+
+          <div>
+            <p class="text-lg font-bold leading-5">AgentHub</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Panel interno</p>
+          </div>
+        </div>
+
+        <nav class="flex gap-2 overflow-x-auto px-4 pb-4 lg:block lg:space-y-1 lg:overflow-visible">
+          <a class="nav-link active-link" href="#dashboard">Dashboard</a>
+          <a class="nav-link" href="#usuarios">Usuarios</a>
+          <a class="nav-link" href="#agentes">Agentes</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#contrataciones">Contrataciones</a>
+          <a class="nav-link" href="#errores">Log de errores</a>
+        </nav>
+      </aside>
+
+      <main class="min-w-0 flex-1">
+        <header class="sticky top-[73px] z-20 border-b border-slate-200 bg-slate-100/90 px-5 py-4 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90 lg:top-0 lg:px-8">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="text-sm font-semibold text-cyan-700 dark:text-cyan-300">
+                Frontend development with Coding Agents
+              </p>
+              <h1 id="pageTitle" class="mt-1 text-2xl font-bold">Dashboard</h1>
+            </div>
+
+            <button
+              id="themeToggle"
+              type="button"
+              class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:border-cyan-500 hover:text-cyan-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-200"
+            >
+              Modo oscuro
+            </button>
+          </div>
+        </header>
+
+        <div class="space-y-8 px-5 py-6 lg:px-8">
+          <section id="dashboard" class="scroll-mt-40 lg:scroll-mt-24">
+            <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="eyebrow">Resumen ejecutivo</p>
+                <h2 class="text-xl font-bold">Dashboard</h2>
+              </div>
+
+              <p class="max-w-2xl text-sm text-slate-500 dark:text-slate-400">
+                Indicadores clave del mes actual y actividad agregada de la plataforma.
+              </p>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <article class="metric-card border-l-4 border-l-emerald-500">
+                <div class="mb-3 text-2xl font-black text-emerald-600">€</div>
+                <span>Ingresos este mes</span>
+                <strong>48.920 EUR</strong>
+                <small>+18% frente al mes anterior</small>
+              </article>
+
+              <article class="metric-card border-l-4 border-l-rose-500">
+                <div class="mb-3 text-2xl font-black text-rose-600">%</div>
+                <span>Perdida por descuentos</span>
+                <strong>3.410 EUR</strong>
+                <small>Cupones aplicados en 19 contratos</small>
+              </article>
+
+              <article class="metric-card border-l-4 border-l-cyan-500">
+                <div class="mb-3 text-2xl font-black text-cyan-600">AI</div>
+                <span>Agentes activos</span>
+                <strong>126</strong>
+                <small>Distribuidos en 34 clientes</small>
+              </article>
+
+              <article class="metric-card border-l-4 border-l-amber-500">
+                <div class="mb-3 text-2xl font-black text-amber-600">!</div>
+                <span>Agentes fallando</span>
+                <strong>7</strong>
+                <small>Requieren revision operativa</small>
+              </article>
+            </div>
+
+            <article class="surface mt-5 p-5">
+              <div class="mb-5 flex items-center justify-between">
+                <div>
+                  <h3 class="font-bold">Actividad semanal</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">
+                    Ejecuciones completadas por dia
+                  </p>
+                </div>
+
+                <span class="badge badge-info">Placeholder</span>
+              </div>
+
+              <div class="flex h-64 items-end gap-3 rounded-lg border border-dashed border-slate-300 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+                <div class="bar h-[42%]" data-day="Lun"></div>
+                <div class="bar h-[68%]" data-day="Mar"></div>
+                <div class="bar h-[51%]" data-day="Mie"></div>
+                <div class="bar h-[84%]" data-day="Jue"></div>
+                <div class="bar h-[73%]" data-day="Vie"></div>
+                <div class="bar h-[37%]" data-day="Sab"></div>
+                <div class="bar h-[45%]" data-day="Dom"></div>
+              </div>
+            </article>
+          </section>
+          <section id="usuarios" class="scroll-mt-40 lg:scroll-mt-24">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Cuentas registradas</p>
+                <h2>Gestion de usuarios</h2>
+              </div>
+              <p>Control de acceso, plan contratado y estado operativo de cada usuario.</p>
+            </div>
+
+            <div class="surface overflow-hidden">
+              <div class="overflow-x-auto">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Email</th>
+                      <th>Plan</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="usersBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section id="agentes" class="scroll-mt-40 lg:scroll-mt-24">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Inventario operativo</p>
+                <h2>Gestion de agentes</h2>
+              </div>
+              <p>Agentes disponibles, propietarios, estado actual y skills instaladas.</p>
+            </div>
+
+            <div id="agentsList" class="grid gap-4"></div>
+          </section>
+
+          <section id="skills" class="scroll-mt-40 lg:scroll-mt-24">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Capacidades reutilizables</p>
+                <h2>Skills</h2>
+              </div>
+              <p>Catalogo de funciones que pueden adjuntarse a agentes segun el caso de uso.</p>
+            </div>
+
+            <div class="surface mb-4 border-cyan-200 bg-cyan-50 p-4 text-sm text-cyan-950 dark:border-cyan-800 dark:bg-cyan-950/40 dark:text-cyan-100">
+              En AgentHub, una skill es una capacidad reutilizable que puede adjuntarse a un agente para ampliar lo que puede hacer, como navegar por la web, leer documentos o gestionar calendarios.
+            </div>
+
+            <div id="skillsGrid" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+          </section>
+
+          <section id="contrataciones" class="scroll-mt-40 lg:scroll-mt-24">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Contratos y facturacion</p>
+                <h2>Contrataciones de agentes</h2>
+              </div>
+              <p>Historial de alquileres activos y pasados con importes pagados.</p>
+            </div>
+
+            <div class="surface overflow-hidden">
+              <div class="overflow-x-auto">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Cliente</th>
+                      <th>Agente</th>
+                      <th>Skills</th>
+                      <th>Fechas</th>
+                      <th>Total</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contractsBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section id="errores" class="scroll-mt-40 lg:scroll-mt-24">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Observabilidad</p>
+                <h2>Log de errores</h2>
+              </div>
+              <p>Incidencias recientes de ejecucion clasificadas por gravedad.</p>
+            </div>
+
+            <div class="surface overflow-hidden">
+              <div class="overflow-x-auto">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Agente</th>
+                      <th>Tipo</th>
+                      <th>Descripcion</th>
+                      <th>Gravedad</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="errorsBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div
+      id="toast"
+      class="pointer-events-none fixed bottom-5 right-5 z-50 translate-y-4 rounded-lg bg-slate-950 px-4 py-3 text-sm font-semibold text-white opacity-0 shadow-xl transition dark:bg-white dark:text-slate-950"
+    ></div>
+
+    <div
+      id="modal"
+      class="fixed inset-0 z-40 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div id="modalBackdrop" class="absolute inset-0 bg-slate-950/60"></div>
+
+      <article class="relative max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+        <div class="flex items-start justify-between gap-4 border-b border-slate-200 p-5 dark:border-slate-700">
+          <div>
+            <p id="modalKicker" class="eyebrow"></p>
+            <h2 id="modalTitle" class="text-xl font-bold"></h2>
+          </div>
+
+          <button
+            id="modalClose"
+            type="button"
+            class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold hover:border-cyan-500 hover:text-cyan-700 dark:border-slate-700 dark:hover:border-cyan-400 dark:hover:text-cyan-200"
+          >
+            Cerrar
+          </button>
+        </div>
+
+        <div id="modalContent" class="p-5"></div>
+      </article>
+    </div>
+    <style type="text/tailwindcss">
+      @layer components {
+        .nav-link {
+          @apply whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-cyan-700 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-cyan-200 lg:block;
+        }
+
+        .active-link {
+          @apply bg-cyan-50 text-cyan-800 ring-1 ring-cyan-200 dark:bg-cyan-950/50 dark:text-cyan-100 dark:ring-cyan-800;
+        }
+
+        .section-title {
+          @apply mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between;
+        }
+
+        .section-title h2 {
+          @apply text-xl font-bold;
+        }
+
+        .section-title p:last-child {
+          @apply max-w-2xl text-sm text-slate-500 dark:text-slate-400;
+        }
+
+        .eyebrow {
+          @apply text-xs font-bold uppercase tracking-wider text-cyan-700 dark:text-cyan-300;
+        }
+
+        .surface {
+          @apply rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
+        }
+
+        .metric-card {
+          @apply surface p-5;
+        }
+
+        .metric-card span {
+          @apply text-sm font-semibold text-slate-500 dark:text-slate-400;
+        }
+
+        .metric-card strong {
+          @apply mt-3 block text-3xl font-black;
+        }
+
+        .metric-card small {
+          @apply mt-2 block text-sm text-slate-500 dark:text-slate-400;
+        }
+
+        .bar {
+          @apply relative flex-1 rounded-t-lg bg-cyan-600 transition hover:bg-cyan-500 dark:bg-cyan-400 dark:hover:bg-cyan-300;
+        }
+
+        .bar::after {
+          content: attr(data-day);
+          @apply absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs font-semibold text-slate-500 dark:text-slate-400;
+        }
+
+        .data-table {
+          @apply w-full min-w-[760px] text-left text-sm;
+        }
+
+        .data-table th {
+          @apply bg-slate-50 px-4 py-3 text-xs font-bold uppercase tracking-wide text-slate-500 dark:bg-slate-800/70 dark:text-slate-300;
+        }
+
+        .data-table td {
+          @apply border-t border-slate-200 px-4 py-4 align-top dark:border-slate-800;
+        }
+
+        .data-table tbody tr {
+          @apply hover:bg-slate-50 dark:hover:bg-slate-800/50;
+        }
+
+        .badge {
+          @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold;
+        }
+
+        .badge-success {
+          @apply bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200;
+        }
+
+        .badge-warning {
+          @apply bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-200;
+        }
+
+        .badge-danger {
+          @apply bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-200;
+        }
+
+        .badge-info {
+          @apply bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-200;
+        }
+
+        .badge-muted {
+          @apply bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200;
+        }
+
+        .action-button {
+          @apply grid h-9 w-9 place-items-center rounded-lg border border-slate-300 text-lg font-bold hover:border-cyan-500 hover:text-cyan-700 dark:border-slate-700 dark:hover:border-cyan-400 dark:hover:text-cyan-200;
+        }
+
+        .dropdown {
+          @apply absolute right-0 top-10 z-20 hidden w-44 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900;
+        }
+
+        .dropdown.open {
+          @apply block;
+        }
+
+        .dropdown button {
+          @apply block w-full px-4 py-2 text-left text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800;
+        }
+
+        .detail-grid {
+          @apply grid gap-3 sm:grid-cols-2;
+        }
+
+        .detail-item {
+          @apply rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950;
+        }
+
+        .detail-item span {
+          @apply block text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400;
+        }
+
+        .detail-item strong {
+          @apply mt-1 block text-sm;
+        }
+      }
+    </style>
+    <script>
+      const users = [
+        {
+          id: 1,
+          name: "Lucia Martin",
+          email: "lucia@novaops.com",
+          plan: "Scale",
+          status: "Activo",
+          company: "NovaOps",
+          joined: "2026-01-14",
+          lastAccess: "2026-05-04 09:42",
+        },
+        {
+          id: 2,
+          name: "Carlos Prieto",
+          email: "carlos@finvero.io",
+          plan: "Business",
+          status: "Activo",
+          company: "Finvero",
+          joined: "2025-11-03",
+          lastAccess: "2026-05-03 18:10",
+        },
+        {
+          id: 3,
+          name: "Marta Soler",
+          email: "marta@clinicflow.es",
+          plan: "Starter",
+          status: "Pendiente",
+          company: "ClinicFlow",
+          joined: "2026-04-22",
+          lastAccess: "Nunca",
+        },
+        {
+          id: 4,
+          name: "Diego Rivas",
+          email: "diego@retailmind.co",
+          plan: "Enterprise",
+          status: "Suspendido",
+          company: "RetailMind",
+          joined: "2025-08-19",
+          lastAccess: "2026-04-29 12:21",
+        },
+        {
+          id: 5,
+          name: "Ana Torres",
+          email: "ana@legalpilot.es",
+          plan: "Business",
+          status: "Activo",
+          company: "LegalPilot",
+          joined: "2026-02-08",
+          lastAccess: "2026-05-04 11:03",
+        },
+      ];
+
+      const agents = [
+        {
+          id: 1,
+          name: "Atlas Research",
+          owner: "NovaOps",
+          status: "Activo",
+          skills: ["Navegacion web", "Lectura de documentos", "Resumen ejecutivo"],
+          prompt:
+            "Eres Atlas Research, un agente especializado en investigacion de mercado. Verifica fuentes, resume hallazgos y escala cualquier incertidumbre critica antes de entregar conclusiones.",
+        },
+        {
+          id: 2,
+          name: "Ledger Sentinel",
+          owner: "Finvero",
+          status: "Fallando",
+          skills: ["Analisis financiero", "Lectura de documentos", "Alertas"],
+          prompt:
+            "Eres Ledger Sentinel. Tu objetivo es revisar movimientos financieros, detectar inconsistencias y generar alertas claras para el equipo de operaciones.",
+        },
+        {
+          id: 3,
+          name: "CareDesk",
+          owner: "ClinicFlow",
+          status: "Inactivo",
+          skills: ["Calendario", "Email", "Clasificacion"],
+          prompt:
+            "Eres CareDesk, asistente de coordinacion clinica. Mantienes un tono empatico, priorizas solicitudes urgentes y nunca proporcionas diagnosticos medicos.",
+        },
+        {
+          id: 4,
+          name: "Retail Copilot",
+          owner: "RetailMind",
+          status: "Activo",
+          skills: ["Analisis de ventas", "Navegacion web", "Generacion de reportes"],
+          prompt:
+            "Eres Retail Copilot. Analizas ventas, inventario y tendencias comerciales para recomendar acciones concretas a responsables de tienda.",
+        },
+      ];
+
+      const skills = [
+        {
+          id: 1,
+          name: "Navegacion web",
+          description: "Permite consultar sitios publicos y sintetizar informacion actual.",
+          enabled: 42,
+          detail:
+            "Incluye busqueda, lectura de paginas y extraccion de datos relevantes con trazabilidad de fuentes.",
+        },
+        {
+          id: 2,
+          name: "Lectura de documentos",
+          description: "Procesa PDFs, documentos y archivos internos.",
+          enabled: 38,
+          detail:
+            "Extrae tablas, clausulas, fechas y conceptos clave desde documentos cargados por el cliente.",
+        },
+        {
+          id: 3,
+          name: "Calendario",
+          description: "Gestiona disponibilidad y propuestas de reunion.",
+          enabled: 17,
+          detail:
+            "Puede revisar huecos, sugerir horarios y preparar invitaciones segun reglas de negocio.",
+        },
+        {
+          id: 4,
+          name: "Email",
+          description: "Clasifica, redacta y prepara respuestas de correo.",
+          enabled: 25,
+          detail: "Trabaja con bandejas compartidas y plantillas aprobadas por el cliente.",
+        },
+        {
+          id: 5,
+          name: "Analisis financiero",
+          description: "Detecta variaciones, riesgos y patrones contables.",
+          enabled: 14,
+          detail: "Pensada para equipos de finanzas, auditoria y operaciones.",
+        },
+        {
+          id: 6,
+          name: "Generacion de reportes",
+          description: "Produce resumenes periodicos listos para negocio.",
+          enabled: 31,
+          detail:
+            "Convierte datos operativos en informes accionables con secciones recurrentes.",
+        },
+      ];
+
+      const contracts = [
+        {
+          id: 1,
+          client: "NovaOps",
+          agent: "Atlas Research",
+          skills: [
+            { name: "Navegacion web", price: 180 },
+            { name: "Lectura de documentos", price: 220 },
+            { name: "Resumen ejecutivo", price: 150 },
+          ],
+          dates: "01/05/2026 - 31/05/2026",
+          status: "Activo",
+          total: 1650,
+        },
+        {
+          id: 2,
+          client: "Finvero",
+          agent: "Ledger Sentinel",
+          skills: [
+            { name: "Analisis financiero", price: 310 },
+            { name: "Alertas", price: 120 },
+          ],
+          dates: "15/04/2026 - 14/05/2026",
+          status: "Activo",
+          total: 1290,
+        },
+        {
+          id: 3,
+          client: "ClinicFlow",
+          agent: "CareDesk",
+          skills: [
+            { name: "Calendario", price: 140 },
+            { name: "Email", price: 160 },
+            { name: "Clasificacion", price: 90 },
+          ],
+          dates: "01/03/2026 - 30/04/2026",
+          status: "Finalizado",
+          total: 780,
+        },
+        {
+          id: 4,
+          client: "RetailMind",
+          agent: "Retail Copilot",
+          skills: [
+            { name: "Analisis de ventas", price: 260 },
+            { name: "Generacion de reportes", price: 180 },
+          ],
+          dates: "10/04/2026 - 09/05/2026",
+          status: "Activo",
+          total: 1320,
+        },
+      ];
+
+      const errors = [
+        {
+          id: 1,
+          timestamp: "2026-05-04 10:18:22",
+          agent: "Ledger Sentinel",
+          type: "Timeout API",
+          severity: "Critico",
+          description: "El proveedor contable no respondio dentro del limite.",
+          trace:
+            "TimeoutError: request to /ledger/sync exceeded 30000ms\nat LedgerConnector.sync\nat AgentRuntime.executeStep\nrequestId=req_81K2",
+        },
+        {
+          id: 2,
+          timestamp: "2026-05-04 08:57:04",
+          agent: "Atlas Research",
+          type: "Fuente bloqueada",
+          severity: "Medio",
+          description: "Una fuente rechazo la consulta automatizada.",
+          trace:
+            "FetchBlockedError: robots policy prevented access\nsource=https://example-market-data.test\nstep=web_research",
+        },
+        {
+          id: 3,
+          timestamp: "2026-05-03 21:12:44",
+          agent: "CareDesk",
+          type: "Permiso insuficiente",
+          severity: "Alto",
+          description: "No pudo acceder al calendario compartido.",
+          trace:
+            "PermissionError: calendar.read scope missing\ncalendarId=shared_clinic_ops\nagent=CareDesk",
+        },
+        {
+          id: 4,
+          timestamp: "2026-05-03 16:40:19",
+          agent: "Retail Copilot",
+          type: "Dato incompleto",
+          severity: "Bajo",
+          description: "El reporte semanal se genero sin ventas de una tienda.",
+          trace:
+            "ValidationWarning: store_id MAD-07 returned empty sales rows\nreport=weekly_sales\nfallback=partial_report",
+        },
+        {
+          id: 5,
+          timestamp: "2026-05-03 14:08:31",
+          agent: "Atlas Research",
+          type: "Formato invalido",
+          severity: "Medio",
+          description: "La respuesta de una fuente externa llego con estructura inesperada.",
+          trace:
+            "SchemaValidationError: expected field summary but received null\nsource=market_feed\nagent=Atlas Research",
+        },
+        {
+          id: 6,
+          timestamp: "2026-05-02 19:25:10",
+          agent: "Ledger Sentinel",
+          type: "Token expirado",
+          severity: "Alto",
+          description: "La integracion financiera rechazo la autenticacion del agente.",
+          trace:
+            "AuthError: expired integration token\nprovider=finvero-ledger\nretry=false",
+        },
+      ];
+      const badgeClass = (value) => {
+        const normalized = value.toLowerCase();
+
+        if (["activo", "activa"].includes(normalized)) return "badge-success";
+        if (["fallando", "critico", "alto"].includes(normalized)) return "badge-danger";
+        if (["pendiente", "medio"].includes(normalized)) return "badge-warning";
+        if (["bajo"].includes(normalized)) return "badge-info";
+
+        return "badge-muted";
+      };
+
+      const money = (value) => `${value.toLocaleString("es-ES")} EUR`;
+
+      function actionMenu(items) {
+        const buttons = items
+          .map(
+            (item) =>
+              `<button type="button" data-action="${item.action}" data-id="${item.id}" data-kind="${item.kind}">${item.label}</button>`
+          )
+          .join("");
+
+        return `
+          <div class="relative inline-block">
+            <button class="action-button" type="button" aria-label="Abrir acciones" data-dropdown>
+              ⋮
+            </button>
+            <div class="dropdown">${buttons}</div>
+          </div>
+        `;
+      }
+
+      function render() {
+        usersBody.innerHTML = users
+          .map(
+            (user) => `
+              <tr>
+                <td class="font-semibold">${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.plan}</td>
+                <td><span class="badge ${badgeClass(user.status)}">${user.status}</span></td>
+                <td>
+                  ${actionMenu([
+                    { label: "Ver detalle", action: "detail", id: user.id, kind: "user" },
+                    { label: "Eliminar", action: "delete", id: user.id, kind: "user" },
+                  ])}
+                </td>
+              </tr>
+            `
+          )
+          .join("");
+
+        agentsList.innerHTML = agents
+          .map(
+            (agent) => `
+              <article class="surface p-5">
+                <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <div class="flex flex-wrap items-center gap-3">
+                      <h3 class="text-lg font-bold">${agent.name}</h3>
+                      <span class="badge ${badgeClass(agent.status)}">${agent.status}</span>
+                    </div>
+
+                    <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                      Propietario: ${agent.owner}
+                    </p>
+                  </div>
+
+                  ${actionMenu([
+                    { label: "Configurar", action: "configure", id: agent.id, kind: "agent" },
+                    { label: "Eliminar", action: "delete", id: agent.id, kind: "agent" },
+                  ])}
+                </div>
+
+                <button
+                  class="mt-4 inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold hover:border-cyan-500 hover:text-cyan-700 dark:border-slate-700 dark:hover:border-cyan-400 dark:hover:text-cyan-200"
+                  type="button"
+                  data-collapse="${agent.id}"
+                >
+                  Ver skills <span aria-hidden="true">↓</span>
+                </button>
+
+                <div
+                  class="grid max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+                  data-skills-panel="${agent.id}"
+                >
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    ${agent.skills
+                      .map((skill) => `<span class="badge badge-info">${skill}</span>`)
+                      .join("")}
+                  </div>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+
+        skillsGrid.innerHTML = skills
+          .map(
+            (skill) => `
+              <article class="surface p-5">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 class="font-bold">${skill.name}</h3>
+                    <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                      ${skill.description}
+                    </p>
+                  </div>
+
+                  ${actionMenu([
+                    { label: "Ver detalle", action: "detail", id: skill.id, kind: "skill" },
+                    { label: "Eliminar", action: "delete", id: skill.id, kind: "skill" },
+                  ])}
+                </div>
+
+                <p class="mt-5 text-sm">
+                  <strong>${skill.enabled}</strong> agentes con esta skill habilitada
+                </p>
+              </article>
+            `
+          )
+          .join("");
+
+        contractsBody.innerHTML = contracts
+          .map(
+            (contract) => `
+              <tr>
+                <td class="font-semibold">${contract.client}</td>
+                <td>${contract.agent}</td>
+                <td>${contract.skills.map((skill) => skill.name).join(", ")}</td>
+                <td>${contract.dates}</td>
+                <td class="font-bold">${money(contract.total)}</td>
+                <td>
+                  ${actionMenu([
+                    {
+                      label: "Ver detalle",
+                      action: "detail",
+                      id: contract.id,
+                      kind: "contract",
+                    },
+                  ])}
+                </td>
+              </tr>
+            `
+          )
+          .join("");
+
+        errorsBody.innerHTML = errors
+          .map(
+            (error) => `
+              <tr data-error-row="${error.id}">
+                <td>${error.timestamp}</td>
+                <td class="font-semibold">${error.agent}</td>
+                <td>${error.type}</td>
+                <td>${error.description}</td>
+                <td><span class="badge ${badgeClass(error.severity)}">${error.severity}</span></td>
+                <td>
+                  ${actionMenu([
+                    { label: "Ver detalle", action: "detail", id: error.id, kind: "error" },
+                    { label: "Marcar como resuelto", action: "resolve", id: error.id, kind: "error" },
+                  ])}
+                </td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+      function openModal(kicker, title, content) {
+        modalKicker.textContent = kicker;
+        modalTitle.textContent = title;
+        modalContent.innerHTML = content;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      function closeModal() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      function detailGrid(items) {
+        return `
+          <div class="detail-grid">
+            ${items
+              .map(
+                ([label, value]) => `
+                  <div class="detail-item">
+                    <span>${label}</span>
+                    <strong>${value}</strong>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        `;
+      }
+
+      function handleAction(action, kind, id) {
+        closeDropdowns();
+
+        const numericId = Number(id);
+
+        if (action === "delete") {
+          showToast("Accion registrada: eliminar queda pendiente de backend.");
+          return;
+        }
+
+        if (action === "resolve") {
+          const row = document.querySelector(`[data-error-row="${numericId}"]`);
+          row?.classList.add("opacity-60");
+          showToast("Error marcado como resuelto en el prototipo.");
+          return;
+        }
+
+        if (kind === "user") {
+          const user = users.find((item) => item.id === numericId);
+
+          openModal(
+            "Registro completo",
+            user.name,
+            detailGrid([
+              ["Email", user.email],
+              ["Plan", user.plan],
+              ["Estado", user.status],
+              ["Empresa", user.company],
+              ["Fecha de alta", user.joined],
+              ["Ultimo acceso", user.lastAccess],
+            ])
+          );
+        }
+
+        if (kind === "agent") {
+          const agent = agents.find((item) => item.id === numericId);
+
+          openModal(
+            "Prompt de sistema",
+            agent.name,
+`<textarea class="min-h-48 w-full rounded-lg border border-slate-300 bg-slate-50 p-4 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">${agent.prompt}</textarea>`
+          );
+        }
+
+        if (kind === "skill") {
+          const skill = skills.find((item) => item.id === numericId);
+
+          openModal(
+            "Detalle de skill",
+            skill.name,
+            detailGrid([
+              ["Descripcion", skill.description],
+              ["Agentes habilitados", skill.enabled],
+              ["Detalle operativo", skill.detail],
+            ])
+          );
+        }
+
+        if (kind === "contract") {
+          const contract = contracts.find((item) => item.id === numericId);
+
+          const rows = contract.skills
+            .map(
+              (skill) => `
+                <tr>
+                  <td class="border-t border-slate-200 py-3 dark:border-slate-700">
+                    ${skill.name}
+                  </td>
+                  <td class="border-t border-slate-200 py-3 text-right font-semibold dark:border-slate-700">
+                    ${money(skill.price)}
+                  </td>
+                </tr>
+              `
+            )
+            .join("");
+
+          openModal(
+            "Desglose de contrato",
+            `${contract.client} - ${contract.agent}`,
+            `
+              ${detailGrid([
+                ["Cliente", contract.client],
+                ["Agente", contract.agent],
+                ["Periodo", contract.dates],
+                ["Estado", contract.status],
+                ["Importe total", money(contract.total)],
+              ])}
+
+              <h3 class="mt-5 font-bold">Skills contratadas</h3>
+              <table class="mt-2 w-full text-sm">
+                <tbody>${rows}</tbody>
+              </table>
+            `
+          );
+        }
+
+        if (kind === "error") {
+          const error = errors.find((item) => item.id === numericId);
+
+          openModal(
+            "Traza completa",
+            `${error.agent} - ${error.type}`,
+            `
+              ${detailGrid([
+                ["Timestamp", error.timestamp],
+                ["Gravedad", error.severity],
+                ["Descripcion", error.description],
+              ])}
+
+              <pre class="mt-5 whitespace-pre-wrap rounded-lg bg-slate-950 p-4 text-sm text-slate-100">${error.trace}</pre>
+            `
+          );
+        }
+      }
+
+      function closeDropdowns() {
+        document.querySelectorAll(".dropdown.open").forEach((menu) => {
+          menu.classList.remove("open");
+        });
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.remove("translate-y-4", "opacity-0");
+
+        window.clearTimeout(showToast.timer);
+
+        showToast.timer = window.setTimeout(() => {
+          toast.classList.add("translate-y-4", "opacity-0");
+        }, 2200);
+      }
+
+      render();
+
+      document.addEventListener("click", (event) => {
+        const dropdownButton = event.target.closest("[data-dropdown]");
+
+        if (dropdownButton) {
+          const menu = dropdownButton.nextElementSibling;
+          const isOpen = menu.classList.contains("open");
+
+          closeDropdowns();
+
+          if (!isOpen) {
+            menu.classList.add("open");
+          }
+
+          event.stopPropagation();
+          return;
+        }
+
+        const actionButton = event.target.closest("[data-action]");
+
+        if (actionButton) {
+          handleAction(
+            actionButton.dataset.action,
+            actionButton.dataset.kind,
+            actionButton.dataset.id
+          );
+          return;
+        }
+
+        const collapseButton = event.target.closest("[data-collapse]");
+
+        if (collapseButton) {
+          const panel = document.querySelector(
+            `[data-skills-panel="${collapseButton.dataset.collapse}"]`
+          );
+
+          const expanded = panel.classList.contains("max-h-40");
+
+          panel.classList.toggle("max-h-0", expanded);
+          panel.classList.toggle("max-h-40", !expanded);
+
+          collapseButton.querySelector("span").textContent = expanded ? "↓" : "↑";
+          return;
+        }
+
+        closeDropdowns();
+      });
+
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.querySelectorAll(".nav-link").forEach((item) => {
+            item.classList.remove("active-link");
+          });
+
+          link.classList.add("active-link");
+          pageTitle.textContent = link.textContent;
+        });
+      });
+
+      themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        themeToggle.textContent = document.documentElement.classList.contains("dark")
+          ? "Modo claro"
+          : "Modo oscuro";
+      });
+
+      modalClose.addEventListener("click", closeModal);
+      modalBackdrop.addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeModal();
+          closeDropdowns();
+        }
+      });
+    </script>
+  </body>
+</html>
